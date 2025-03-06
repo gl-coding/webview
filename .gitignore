@@ -1,0 +1,14 @@
+# 依赖目录
+node_modules/
+npm-debug.log
+
+# Electron打包输出
+dist/
+build/
+out/
+*.app
+*.exe
+*.dmg
+*.zip
+*.pkg
+*.AppImage

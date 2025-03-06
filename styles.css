@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义组件 */
+@layer components {
+  #loading-indicator {
+    @apply fixed top-2 right-2 bg-black/70 text-white py-1 px-2 rounded text-xs z-50;
+  }
+
+  /* 标签页关闭按钮样式 */
+  .tab-close {
+    @apply ml-1 text-sm opacity-50 transition-opacity;
+  }
+
+  .tab:hover .tab-close {
+    @apply opacity-100;
+  }
+} 

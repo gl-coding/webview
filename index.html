@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src *; img-src * data:; media-src *; object-src 'none';">
+  <title>Electron 浏览器</title>
+  <link rel="stylesheet" href="output.css">
+</head>
+<body class="flex flex-col h-screen overflow-hidden bg-gray-100">
+  <header class="flex items-center px-4 py-2 bg-gray-200 border-b border-gray-300">
+    <div class="flex mr-2">
+      <button id="back-button" title="后退" class="w-8 h-8 mr-1 text-gray-700 bg-white rounded hover:bg-gray-100">◀</button>
+      <button id="forward-button" title="前进" class="w-8 h-8 mr-1 text-gray-700 bg-white rounded hover:bg-gray-100">▶</button>
+      <button id="refresh-button" title="刷新" class="w-8 h-8 mr-1 text-gray-700 bg-white rounded hover:bg-gray-100">↻</button>
+      <button id="home-button" title="主页" class="w-8 h-8 mr-1 text-gray-700 bg-white rounded hover:bg-gray-100">🏠</button>
+    </div>
+
+    <div class="flex flex-1 h-8">
+      <input type="text" id="url-input" placeholder="输入网址或搜索内容" class="flex-1 px-2 border border-gray-300 rounded-l focus:outline-none">
+      <button id="go-button" class="w-10 text-gray-700 bg-white border border-l-0 border-gray-300 rounded-r hover:bg-gray-100">Go</button>
+    </div>
+
+    <div class="flex ml-2">
+      <button id="bookmark-button" title="添加书签" class="w-8 h-8 ml-1 text-gray-700 bg-white rounded hover:bg-gray-100">⭐</button>
+      <button id="bookmarks-menu-button" title="书签" class="w-8 h-8 ml-1 text-gray-700 bg-white rounded hover:bg-gray-100">📑</button>
+      <button id="new-tab-button" title="新建标签页" class="w-8 h-8 ml-1 text-gray-700 bg-white rounded hover:bg-gray-100">+</button>
+    </div>
+  </header>
+
+  <div class="w-full h-9 bg-gray-300 flex overflow-x-auto scroll-smooth">
+    <div id="tabs-bar" class="flex h-full">
+      <!-- 标签页将在这里动态生成 -->
+    </div>
+  </div>
+
+  <div id="bookmarks-panel" class="hidden absolute top-20 right-4 w-72 max-h-96 bg-white shadow-lg z-10 rounded overflow-y-auto p-3">
+    <h3 class="mb-2 pb-1 border-b border-gray-200">书签</h3>
+    <div id="bookmarks-list">
+      <!-- 书签将在这里动态生成 -->
+    </div>
+  </div>
+
+  <main id="browser-container" class="flex-1 relative bg-white">
+    <!-- 初始标签页 -->
+    <div class="browser-tab active absolute inset-0 w-full h-full" data-tab-id="tab-1">
+      <webview id="webview-1" src="https://www.google.com/" nodeintegration="false" partition="persist:main" allowpopups webpreferences="allowRunningInsecureContent=yes" class="w-full h-full border-none bg-white"></webview>
+    </div>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html> 
